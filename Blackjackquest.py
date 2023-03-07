@@ -19,7 +19,7 @@ def check_if_bust():
 
 
 def check_score():
-    if playa.bust or dealer.bust:
+    if playa.bust and dealer.bust:
       print("DRAW")
     else:
       if playa.total > dealer.total:
