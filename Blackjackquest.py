@@ -56,17 +56,18 @@ def run_game():
             else:
                 playa.is_hitting = False
             print(playa.hand)
+            check_if_bust()
 
         else:
             if dealer.total < 17:
                 draw(dealer)
                 print("dealer", dealer.hand)
+                check_if_bust()
             else:
                 dealer.is_hitting = False
                 if playa.bust or playa.is_hitting == False:
                     check_score()
                     break
-        check_if_bust()
         turn_counter += 1
 
 
