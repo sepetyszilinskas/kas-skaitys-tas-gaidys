@@ -19,9 +19,9 @@ def check_if_bust():
 
 
 def check_score():
-    if playa.total > dealer.total and not playa.bust:
+    if playa.total > dealer.total and playa.bust == False:
         print("player wins")
-    elif playa.total < dealer.total and not dealer.bust:
+    elif playa.total < dealer.total and dealer.bust == False:
         print("house wins")
     else:
         print("DRAW")
