@@ -14,12 +14,14 @@ kalade = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K",
 def check_if_bust():
     if playa.total > 21:
         playa.bust = True
+        print(1)
     if dealer.total > 21:
+        print(2)
         dealer.bust = True
 
 
 def check_score():
-    if playa.bust or dealer.bust:
+    if playa.bust and dealer.bust:
       print("DRAW")
     else:
       if playa.total > dealer.total:
@@ -27,7 +29,7 @@ def check_score():
       elif dealer.total > playa.total:
         print("Dealer wins")
       else:
-        print("DRAW")
+        print("dRAW")
 
 
 def draw(player):
@@ -69,5 +71,3 @@ def run_game():
                     check_score()
                     break
         turn_counter += 1
-
-
