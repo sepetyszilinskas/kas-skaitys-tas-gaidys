@@ -14,22 +14,26 @@ kalade = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K",
 def check_if_bust():
     if playa.total > 21:
         playa.bust = True
-        print(1)
     if dealer.total > 21:
-        print(2)
         dealer.bust = True
+
 
 
 def check_score():
     if playa.bust and dealer.bust:
       print("DRAW")
-    else:
-      if playa.total > dealer.total:
+      print(f"playa had {playa.hand}")
+      print(f"dealer had {dealer.hand}")
+    elif (playa.bust == False and playa.total > dealer.total) or dealer.bust:
         print("Playa wins")
-      elif dealer.total > playa.total:
+        print(f"playa had {playa.hand}")
+        print(f"dealer had {dealer.hand}")
+    elif (dealer.bust == False and dealer.total > playa.total) or playa.bust:
         print("Dealer wins")
-      else:
-        print("dRAW")
+        print(f"playa had {playa.hand}")
+        print(f"dealer had {dealer.hand}")
+    else:
+        print("Draw")
 
 
 def draw(player):
@@ -49,22 +53,25 @@ def draw(player):
 
 def run_game():
     turn_counter = 1
-    while turn_counter < 10:
+    while True:
         if turn_counter % 2 == 0 and playa.is_hitting and not playa.bust:
             action = int(input("Input 2 for stand, input 1 for hit : "))
             if action == 1:
                 draw(playa)
                 print("u drew", playa.hand[-1])
-            else:
+            elif action == 2 :
                 playa.is_hitting = False
+            else:
+                print("wrong number")
             print(playa.hand)
             check_if_bust()
+
 
         else:
             if dealer.total < 17:
                 draw(dealer)
-                print("dealer", dealer.hand)
                 check_if_bust()
+                print(f"dealer has {len(dealer.hand)} cards")
             else:
                 dealer.is_hitting = False
                 if playa.bust or playa.is_hitting == False:
